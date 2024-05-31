@@ -90,3 +90,29 @@ This endpoint updates a warehouse record by its ID. The @PutMapping annotation m
 The @RequestBody annotation binds the request body to the method parameter. 
 The method retrieves the warehouse by ID, updates its fields with the new data, and saves the updated record. 
 If the warehouse is found, it returns the updated data with an HTTP 200 status; otherwise, it returns a 404 status.
+
+## application.properties
+
+I just need to update my data source config like that:
+```
+# spring.datasource.url=jdbc:mysql://localhost:3307/example
+spring.datasource.url=jdbc:postgresql://localhost:5432/example
+```
+
+The same thing for the username:
+```
+# spring.datasource.username=root
+spring.datasource.username=postgres
+```
+
+And the driver:
+```
+# spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.driver-class-name=org.postgresql.Driver
+```
+
+As well as the hibernate properties:
+```
+# spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+```
